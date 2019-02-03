@@ -3,6 +3,10 @@
     max-height: 100%;
 }
 
+.form-control {
+    color: #333;
+}
+
 .no-padding {
     padding: 0 !important;
 }

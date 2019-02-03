@@ -11,7 +11,7 @@
     button {
         font-size: 0.76rem;
         border-radius: 0;
-        padding: 0.3rem 0.4rem;
+        padding: 0.4rem 0.6rem;
         line-height: 1rem;
         color: #fff;
 
@@ -74,17 +74,12 @@
         border-radius: 0;
     }
 
-    &[v-cloak] {
-        display: none;
-    }
-
     .table {
         margin: 0;
     }
 
     .form-control {
         padding: .3rem .5rem;
-        color: #333;
     }
 
     .no-select {
@@ -1152,6 +1147,10 @@
                 color: #333;
             }
         }
+    }
+
+    &[v-cloak] {
+        display: none;
     }
 }
 /* modal */
