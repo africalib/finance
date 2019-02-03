@@ -398,7 +398,8 @@
                                     <option value="">전체</option>
                                     <option v-for="(p, idx) in protected" :value="idx">{{ p.name }}</option>
                                 </select>
-                                <button class="btn" type="button" v-on:click="backup('copy')">복사하기</button>
+                                <button class="btn" type="button" v-on:click="backup('email')">메일 발송</button>
+                                <button class="btn" type="button" v-on:click="backup('copy')">복사</button>
                             </div>
                         </div>
                         <hr />
@@ -411,7 +412,7 @@
                                     <option value="">전체</option>
                                     <option v-for="(p, idx) in protected" :value="idx">{{ p.name }}</option>
                                 </select>
-                                <button class="btn" type="button" v-on:click="backup('restore')">복원하기</button>
+                                <button class="btn" type="button" v-on:click="backup('restore')">복원</button>
                             </div>
                         </div>
                     </div>

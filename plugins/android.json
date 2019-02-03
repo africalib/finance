@@ -15,6 +15,9 @@
     },
     "cordova-plugin-whitelist": {
       "PACKAGE_NAME": "org.africalib.finance"
+    },
+    "cordova-plugin-email": {
+      "PACKAGE_NAME": "org.africalib.finance"
     }
   },
   "dependent_plugins": {}

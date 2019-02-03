@@ -1335,6 +1335,14 @@
                     appLib.bandMessage('success', '복사하였습니다.', 3000);
                     break;
 
+                case 'email':
+                    cordova.plugins.email.open({
+                        to: '',
+                        subject: '바른재정관리 백업 데이터',
+                        body: this.temp.backup.backup.data
+                    });
+                    break;
+
                 case 'restore':
                     var content = this.temp.backup.restore.data;
 
