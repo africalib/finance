@@ -1,0 +1,148 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet" />
+    <style>
+        body {
+            margin: 0;
+        }
+
+        .outer {
+            display: inline-block;
+            background: #225378;
+            font-size: 89px;
+            width: 512px;
+            height: 512px;
+            position: relative;
+            text-align: center;
+        }
+
+        .ruler {
+            display: inline-block;
+            width: 96px;
+            background: #fff;
+            height: 336px;
+            position: absolute;
+            left: 84px;
+            top: 83px;
+            border: 4px solid #fff;
+        }
+
+            .ruler .mark {
+                position: absolute;
+                top: 20px;
+                right: -4px;
+                text-align: right;
+            }
+
+                .ruler .mark span {
+                    display: inline-block;
+                    width: 50px;
+                    height: 5px;
+                    background: #225378;
+                    margin-bottom: 24px;
+                }
+
+                    .ruler .mark span:nth-child(2n) {
+                        width: 70px;
+                    }
+
+        .pencil {
+            position: absolute;
+            font-size: 3.5em;
+            color: #fff;
+            right: 3px;
+            top: 80px;
+        }
+
+            .pencil i {
+                transform: rotate(-45deg);
+            }
+
+            .pencil .rect {
+                position: absolute;
+                display: inline-block;
+                top: 3px;
+                left: 81px;
+                width: 104px;
+                background: #fff;
+                height: 38px;
+                border-bottom: 16px solid #225378;
+            }
+
+            .pencil .line {
+                position: absolute;
+                display: inline-block;
+                width: 3px;
+                background: #fff;
+            }
+
+                .pencil .line.left {
+                    left: 81px;
+                    top: 27px;
+                    height: 269px;
+                }
+
+                    .pencil .line.left.bottom {
+                        top: 284px;
+                        transform: rotate(-45deg);
+                        height: 73px;
+                        left: 106px;
+                    }
+
+                .pencil .line.right {
+                    right: 82px;
+                    top: 27px;
+                    height: 269px;
+                }
+
+                    .pencil .line.right.bottom {
+                        top: 284px;
+                        transform: rotate(45deg);
+                        height: 73px;
+                        right: 108px;
+                    }
+
+        .cannon {
+            width: 100%;
+            height: 100%;
+            display: inline-block;
+            width: 10px;
+            height: 345px;
+            position: absolute;
+            background: #fff;
+            position: absolute;
+            left: 50%;
+            top: 83px;
+            margin-left: -5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="outer">
+        <div class="ruler">
+            <div class="mark">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        <div class="pencil">
+            <i class="fa fa-pencil" aria-hidden="true"></i>
+            <div class="rect top"></div>
+            <div class="line left"></div>
+            <div class="line right"></div>
+            <div class="line left bottom"></div>
+            <div class="line right bottom"></div>
+        </div>
+        <div class="cannon"></div>
+    </div>
+</body>
+</html>
