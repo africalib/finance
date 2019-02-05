@@ -8,6 +8,57 @@
     overflow: hidden;
     color: #333;
 
+
+    .btn-navy {
+        background: #225378;
+        border-color: #225378;
+    }
+
+    .btn-blue {
+        background: #07c;
+        border-color: #07c;
+    }
+
+    .btn-green {
+        background: #379392;
+        border-color: #379392;
+    }
+
+    .btn-red {
+        background: #E71D36;
+        border-color: #E71D36;
+    }
+
+    .btn-pink {
+        background: #fe4365;
+        border-color: #fe4365;
+    }
+
+    .btn-orange {
+        background: #F77A52;
+        border-color: #F77A52;
+    }
+
+    .btn-brown {
+        background: #CE6D39;
+        border-color: #CE6D39;
+    }
+
+    .btn-beige {
+        background: #d0b584;
+        border-color: #d0b584;
+    }
+
+    .btn-purple {
+        background: #7B52AB;
+        border-color: #7B52AB;
+    }
+
+    .btn-black {
+        background: #333;
+        border-color: #333;
+    }
+
     button {
         font-size: 0.76rem;
         border-radius: 0;
@@ -17,56 +68,6 @@
 
         &:hover, &active, &focus {
             color: #fff;
-        }
-
-        &.btn-navy {
-            background: #225378;
-            border-color: #225378;
-        }
-
-        &.btn-blue {
-            background: #07c;
-            border-color: #07c;
-        }
-
-        &.btn-green {
-            background: #379392;
-            border-color: #379392;
-        }
-
-        &.btn-red {
-            background: #E71D36;
-            border-color: #E71D36;
-        }
-
-        &.btn-pink {
-            background: #fe4365;
-            border-color: #fe4365;
-        }
-
-        &.btn-orange {
-            background: #F77A52;
-            border-color: #F77A52;
-        }
-
-        &.btn-brown {
-            background: #CE6D39;
-            border-color: #CE6D39;
-        }
-
-        &.btn-beige {
-            background: #d0b584;
-            border-color: #d0b584;
-        }
-
-        &.btn-purple {
-            background: #7B52AB;
-            border-color: #7B52AB;
-        }
-
-        &.btn-black {
-            background: #333;
-            border-color: #333;
         }
     }
 
@@ -138,7 +139,6 @@
         height: 100%;
         position: absolute;
         right: 0;
-        /*transition: right 0.3s;*/
         top: 0;
         width: 100%;
         padding-top: 3.59rem;
@@ -217,7 +217,6 @@
                             font-size: 0.9rem;
                             padding: 1rem 0;
                             height: 100%;
-                            /*text-align-last: center;*/
                             width: auto;
                             margin-left: auto;
                             margin-right: auto;
@@ -306,7 +305,6 @@
                                 text-indent: 1px;
                                 padding: 0;
                                 height: 100%;
-                                /*text-align-last: center;*/
                                 width: auto;
                                 margin-left: auto;
                                 margin-right: auto;
@@ -329,7 +327,7 @@
                         left: 0;
                         width: 100%;
                         height: 100%;
-                        padding-top: 6.24rem;
+                        padding-top: 6.55rem;
                         padding-bottom: 2.4rem;
                         overflow: auto;
 
@@ -439,8 +437,7 @@
 
         .table {
             .table-body {
-                padding-top: 2.7rem;
-                padding-bottom: 2.6rem;
+                padding: 3rem 0;
             }
 
             .table-row .table-data {
@@ -470,6 +467,27 @@
     &.category, &.bank {
         .app-part .part-body .body-content .table .table-row .table-data {
             width: 50%;
+        }
+    }
+
+    &.password {
+        .app-part .part-body .body-content > .wrapper {
+            padding: 1rem;
+
+            label {
+                font-size: 0.8rem;
+            }
+
+            input {
+                text-align: center;
+                padding: 1rem;
+                height: 3rem;
+                -webkit-text-security: disc;
+            }
+
+            button {
+                margin-top: 0.5rem;
+            }
         }
     }
 
@@ -508,8 +526,6 @@
                     }
 
                     button {
-                        background: #379391;
-                        color: #fff;
                         font-size: 0.76rem;
                     }
                 }
@@ -559,7 +575,6 @@
     .app-part .part-body .body-add .add-btn {
         cursor: pointer;
         display: inline-block;
-        background: #379391;
         color: #fff;
         border-radius: 50%;
 
@@ -624,10 +639,73 @@
                 -webkit-appearance: none;
                 -moz-appearance: none;
                 height: 100%;
-                /*text-align-last: center;*/
                 width: auto;
                 margin-left: auto;
                 margin-right: auto;
+            }
+        }
+    }
+
+    .app-hider {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        z-index: 100;
+        background: #eee;
+        padding: 0 2rem;
+        text-align: center;
+
+        > .wrapper {
+            height: 100%;
+            position: relative;
+            top: 50%;
+            left: 0;
+            width: 100%;
+            margin-top: -15rem;
+
+            .ico {
+                i {
+                    border-radius: 50%;
+                    background: #333;
+                    color: #fff;
+                    font-size: 3rem;
+                    text-align: center;
+                    width: 6.3rem;
+                    padding: 1.65rem 0;
+                }
+            }
+
+            .title {
+                font-size: 1.5rem;
+                margin: 1.5rem 0;
+            }
+
+            input {
+                text-align: center;
+                height: 4rem;
+                font-size: 2rem;
+                background: #fff;
+            }
+
+            .keyboard {
+                margin-top: 1rem;
+
+                table {
+                    td {
+                        padding: 1.25rem 0;
+                        border: 0;
+                        cursor: pointer;
+                        width: 33.3%;
+                        max-width: 33.3%;
+                        font-size: 1.2rem;
+
+                        &:active {
+                            font-weight: bold;
+                        }
+                    }
+                }
             }
         }
     }
@@ -763,16 +841,6 @@
             }
         }
 
-        .modal button.save-btn, ~ .modal button.save-btn {
-            background-color: #225378;
-            border-color: #225378;
-            color: #fff;
-        }
-
-        .app-part .part-body .body-content.backup .backup-action button {
-            background-color: #225378;
-        }
-
         ~ {
             .ui-state-highlight, .ui-widget-content .ui-state-highlight, .ui-widget-header .ui-state-highlight {
                 background: #225378;
@@ -796,20 +864,6 @@
                     background: #005ca0;
                 }
             }
-
-            .part-body .body-add .add-btn {
-                background: #07c;
-            }
-        }
-
-        .modal button.save-btn, ~ .modal button.save-btn {
-            background-color: #07c;
-            border-color: #07c;
-            color: #fff;
-        }
-
-        .app-part .part-body .body-content.backup .backup-action button {
-            background-color: #07c;
         }
 
         ~ {
@@ -835,20 +889,6 @@
                     background: #4FB0C6;
                 }
             }
-
-            .part-body .body-add .add-btn {
-                background: #379392;
-            }
-        }
-
-        .modal button.save-btn, ~ .modal button.save-btn {
-            background-color: #379392;
-            border-color: #379392;
-            color: #fff;
-        }
-
-        .app-part .part-body .body-content.backup .backup-action button {
-            background-color: #379392;
         }
 
         ~ {
@@ -874,20 +914,6 @@
                     background: #c72538;
                 }
             }
-
-            .part-body .body-add .add-btn {
-                background: #E71D36;
-            }
-        }
-
-        .modal button.save-btn, ~ .modal button.save-btn {
-            background-color: #E71D36;
-            border-color: #E71D36;
-            color: #fff;
-        }
-
-        .app-part .part-body .body-content.backup .backup-action button {
-            background-color: #E71D36;
         }
 
         ~ {
@@ -913,20 +939,6 @@
                     background: #fc9d9a;
                 }
             }
-
-            .part-body .body-add .add-btn {
-                background: #fe4365;
-            }
-        }
-
-        .modal button.save-btn, ~ .modal button.save-btn {
-            background-color: #fe4365;
-            border-color: #fe4365;
-            color: #fff;
-        }
-
-        .app-part .part-body .body-content.backup .backup-action button {
-            background-color: #fe4365;
         }
 
         ~ {
@@ -952,20 +964,6 @@
                     background: #FF974F;
                 }
             }
-
-            .part-body .body-add .add-btn {
-                background: #F77A52;
-            }
-        }
-
-        .modal button.save-btn, ~ .modal button.save-btn {
-            background-color: #F77A52;
-            border-color: #F17F42;
-            color: #fff;
-        }
-
-        .app-part .part-body .body-content.backup .backup-action button {
-            background-color: #F77A52;
         }
 
         ~ {
@@ -991,20 +989,6 @@
                     background: #F17F42;
                 }
             }
-
-            .part-body .body-add .add-btn {
-                background: #CE6D39;
-            }
-        }
-
-        .modal button.save-btn, ~ .modal button.save-btn {
-            background-color: #CE6D39;
-            border-color: #CE6D39;
-            color: #fff;
-        }
-
-        .app-part .part-body .body-content.backup .backup-action button {
-            background-color: #CE6D39;
         }
 
         ~ {
@@ -1030,20 +1014,6 @@
                     background: #bda476;
                 }
             }
-
-            .part-body .body-add .add-btn {
-                background: #d0b584;
-            }
-        }
-
-        .modal button.save-btn, ~ .modal button.save-btn {
-            background-color: #d0b584;
-            border-color: #d0b584;
-            color: #fff;
-        }
-
-        .app-part .part-body .body-content.backup .backup-action button {
-            background-color: #d0b584;
         }
 
         ~ {
@@ -1069,20 +1039,6 @@
                     background: #553285;
                 }
             }
-
-            .part-body .body-add .add-btn {
-                background: #7B52AB;
-            }
-        }
-
-        .modal button.save-btn, ~ .modal button.save-btn {
-            background-color: #7B52AB;
-            border-color: #7B52AB;
-            color: #fff;
-        }
-
-        .app-part .part-body .body-content.backup .backup-action button {
-            background-color: #670066;
         }
 
         ~ {
@@ -1108,20 +1064,6 @@
                     background: #545454;
                 }
             }
-
-            .part-body .body-add .add-btn {
-                background: #333;
-            }
-        }
-
-        .modal button.save-btn, ~ .modal button.save-btn {
-            background-color: #333;
-            border-color: #333;
-            color: #fff;
-        }
-
-        .app-part .part-body .body-content.backup .backup-action button {
-            background-color: #545454;
         }
 
         ~ {
@@ -1153,8 +1095,7 @@
         display: none;
     }
 }
-/* modal */
-/* theme */
+
 /* custom */
 .form-control, .btn {
     box-shadow: none !important;

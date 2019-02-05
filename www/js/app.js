@@ -84,11 +84,14 @@
                 exportPath: '',
                 import: '',
                 imports: []
-            }
+            },
+            password: null,
+            passed: false
         },
         private: {
             theme: 'navy',
             themes: ['navy'],
+            password: null,
             idx: 0
         },
         protected: [{
@@ -282,14 +285,17 @@
                                 case 'theme':
                                     return '테마 설정';
 
-                                case 'backup':
-                                    return '백업/복원';
-
-                                case 'eximport':
-                                    return '내보내기/가져오기';
+                                case 'password':
+                                    return '암호 설정';
 
                                 case 'reset':
                                     return '데이터 초기화';
+
+                                case 'backup':
+                                    return '데이터 백업/복원';
+
+                                case 'eximport':
+                                    return '데이터 내보내기/가져오기';
 
                                 case 'store':
                                     return '앱 평가하기';
@@ -315,6 +321,9 @@
 
                                 case 'theme':
                                     return 'window-maximize';
+
+                                case 'password':
+                                    return 'key';
 
                                 case 'backup':
                                     return 'refresh';
@@ -527,12 +536,10 @@
                         case 'record':
                             if (!t.temp.modal.record.money) {
                                 appLib.bandMessage('warning', '금액을 입력해주세요.', 3000);
-                                t.temp.modal.el.find('input[type=number]:visible').focus();
                                 return;
                             }
                             else if (!Number(t.temp.modal.record.money)) {
                                 appLib.bandMessage('warning', '금액 값을 확인해주세요.', 3000);
-                                t.temp.modal.el.find('input[type=number]:visible').focus();
                                 return;
                             }
 
@@ -607,7 +614,6 @@
                         case 'kind':
                             if (!t.temp.modal.kind.value) {
                                 appLib.bandMessage('warning', '종류명을 입력해주세요.', 3000);
-                                t.temp.modal.el.find('input[type=text]:visible').focus();
                                 return;
                             }
                             else if (t.temp.modal.kind.dday < 0 || t.temp.modal.kind.dday > 31) {
@@ -649,7 +655,6 @@
                         case 'category':
                             if (!t.temp.modal.category.value) {
                                 appLib.bandMessage('warning', '분류명을 입력해주세요.', 3000);
-                                t.temp.modal.el.find('input[type=text]:visible').focus();
                                 return;
                             }
 
@@ -683,7 +688,6 @@
                         case 'bank':
                             if (!t.temp.modal.bank.value) {
                                 appLib.bandMessage('warning', '은행명을 입력해주세요.', 3000);
-                                t.temp.modal.el.find('input[type=text]:visible').focus();
                                 return;
                             }
 
@@ -723,12 +727,10 @@
                             }
                             else if (!t.temp.modal.carry.value) {
                                 appLib.bandMessage('warning', '이월금을 입력해주세요.', 3000);
-                                t.temp.modal.el.find('input[type=text]:visible').focus();
                                 return;
                             }
                             else if (isNaN(Number(t.temp.modal.carry.value))) {
                                 appLib.bandMessage('warning', '이월금은 숫자로 입력해주세요.', 3000);
-                                t.temp.modal.el.find('input[type=text]:visible').focus();
                                 return;
                             }
 
@@ -1300,6 +1302,73 @@
                     break;
             }
         },
+        password: function (act, val) {
+            switch (act) {
+                case 'save':
+                    if (!this.private.password) {
+                        appLib.bandMessage('warning', '암호를 입력해주세요.', 3000);
+                        this.private.password = null;
+                    }
+                    else if (isNaN(Number(this.private.password))) {
+                        appLib.bandMessage('warning', '암호를 숫자로 입력해주세요.', 3000);
+                        this.private.password = null;
+                    }
+                    else if (Number(this.private.password) !== parseInt(this.private.password, 10)) {
+                        appLib.bandMessage('warning', '암호를 정수로 입력해주세요.', 3000);
+                        this.private.password = null;
+                    }
+                    else if (Number(this.private.password) < 0) {
+                        appLib.bandMessage('warning', '암호를 0이상의 숫자로 입력해주세요.', 3000);
+                        this.private.password = null;
+                    }
+                    else if (this.private.password.toString().length !== 4) {
+                        appLib.bandMessage('warning', '암호를 4자리의 숫자로 입력해주세요.', 3000);
+                        this.private.password = null;
+                    }
+                    else {
+                        this.set('storage', 'private', JSON.stringify(this.private));
+                        sessionStorage.setItem('passed', true);
+                        appLib.bandMessage('success', '저장하였습니다.', 3000);
+                    }
+                    break;
+
+                case 'delete':
+                    this.temp.password = '';
+                    break;
+
+                case 'remove':
+                    if (confirm('암호를 삭제하시겠습니까?')) {
+                        this.private.password = null;
+                        this.set('storage', 'private', JSON.stringify(this.private));
+                        appLib.bandMessage('success', '삭제하였습니다.', 3000);
+                    }
+                    break;
+
+                case 'check':
+                    if (this.temp.password === null)
+                        this.temp.password = '';
+
+                    this.temp.password += val.toString();
+
+                    if (this.temp.password !== null && this.temp.password.toString() && this.temp.password.toString().length === 4) {
+                        if (this.temp.password === this.private.password) {
+                            this.temp.passed = true;
+                            sessionStorage.setItem('passed', true);
+                        }
+                        else {
+                            appLib.bandMessage('warning', '암호가 올바르지 않습니다.', 3000);
+                            this.temp.password = null;
+                        }
+                    }
+                    break;
+
+                default:
+                    this.temp.mode = 'password';
+                    this.nav('close');
+                    this.modal('close');
+                    break;
+            }
+        },
         refresh: function () {
             location.reload();
         },
@@ -1348,7 +1417,6 @@
 
                     if (!content) {
                         appLib.bandMessage('warning', '데이터를 입력해주세요.', 3000);
-                        $('#backupContent').focus();
                         return;
                     }
 
@@ -1558,6 +1626,7 @@
         var d = new Date();
         var private = localStorage.getItem('private');
         var protected = localStorage.getItem('protected');
+        var passed = sessionStorage.getItem('passed');
         var defaultData = {
             private: appLib.renew(t.private),
             protected: appLib.renew(t.protected)
@@ -1573,6 +1642,14 @@
 
         if (!t.private.themes)
             t.private.themes = ['navy'];
+
+        if (!t.private.password) {
+            t.private.password = null;
+            t.temp.passed = true;
+        }
+        else if (passed) {
+            t.temp.passed = passed === 'true';
+        }
 
         if (protected)
             t.protected = JSON.parse(protected);
