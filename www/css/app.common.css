@@ -11,6 +11,10 @@
     padding: 0 !important;
 }
 
+.mb-0 {
+    margin-bottom: 0 !important;
+}
+
 .band-message {
     display: none;
     position: fixed;

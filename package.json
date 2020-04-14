@@ -11,6 +11,7 @@
   "license": "Apache-2.0",
   "dependencies": {
     "cordova-android": "^7.1.4",
+    "cordova-plugin-device": "^2.0.3",
     "cordova-plugin-email": "^1.2.7",
     "cordova-plugin-file": "^6.0.1",
     "cordova-plugin-splashscreen": "^5.0.2",
@@ -21,7 +22,8 @@
       "cordova-plugin-whitelist": {},
       "cordova-plugin-splashscreen": {},
       "cordova-plugin-file": {},
-      "cordova-plugin-email": {}
+      "cordova-plugin-email": {},
+      "cordova-plugin-device": {}
     },
     "platforms": [
       "android"

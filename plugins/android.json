@@ -7,6 +7,9 @@
     "files": {}
   },
   "installed_plugins": {
+    "cordova-plugin-email": {
+      "PACKAGE_NAME": "org.africalib.finance"
+    },
     "cordova-plugin-file": {
       "PACKAGE_NAME": "org.africalib.finance"
     },
@@ -16,7 +19,7 @@
     "cordova-plugin-whitelist": {
       "PACKAGE_NAME": "org.africalib.finance"
     },
-    "cordova-plugin-email": {
+    "cordova-plugin-device": {
       "PACKAGE_NAME": "org.africalib.finance"
     }
   },

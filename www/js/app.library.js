@@ -76,10 +76,10 @@
     nowTime: function () {
         var date = new Date();
         var pad2 = function (n) {
-            return n < 10 ? '0' + n : n
+            return n < 10 ? '0' + n : n;
         };
 
-        return date.getFullYear().toString() + pad2(date.getMonth() + 1) + pad2(date.getDate()) + pad2(date.getHours()) + pad2(date.getMinutes()) + pad2(date.getSeconds());
+        return date.getFullYear().toString() + '-' + pad2(date.getMonth() + 1) + '-' + pad2(date.getDate()) + '_' + pad2(date.getHours()) + '-' + pad2(date.getMinutes()) + '-' + pad2(date.getSeconds());
     },
 
     renew: function (val) {

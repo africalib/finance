@@ -73,17 +73,17 @@
             backup: {
                 backup: {
                     idx: '',
-                    data: ''
+                    data: '',
+                    autos: []
                 },
                 restore: {
                     idx: '',
-                    data: ''
+                    data: '',
+                    auto: ''
                 }
             },
-            eximport: {
-                exportPath: '',
-                import: '',
-                imports: []
+            online: {
+                uuid: null
             },
             password: null,
             passed: false
@@ -92,7 +92,8 @@
             theme: 'navy',
             themes: ['navy'],
             password: null,
-            idx: 0
+            idx: 0,
+            uuid: null
         },
         protected: [{
             name: '기본 재정',
@@ -294,8 +295,8 @@
                                 case 'backup':
                                     return '데이터 백업/복원';
 
-                                case 'eximport':
-                                    return '데이터 내보내기/가져오기';
+                                case 'online':
+                                    return '데이터 온라인 백업/복원';
 
                                 case 'store':
                                     return '앱 평가하기';
@@ -328,8 +329,8 @@
                                 case 'backup':
                                     return 'refresh';
 
-                                case 'eximport':
-                                    return 'download';
+                                case 'online':
+                                    return 'cloud-upload';
 
                                 case 'reset':
                                     return 'eraser';
@@ -786,6 +787,34 @@
                     t.modal('close');
                     t.$forceUpdate();
                     appLib.bandMessage('success', '저장하였습니다.', 3000);
+
+                    if (window.cordova) {
+                        try {
+                            window.resolveLocalFileSystemURL(cordova.file.externalApplicationStorageDirectory, function (dirEntry1) {
+                                try {
+                                    dirEntry1.getDirectory('backups', { create: true }, function (dirEntry2) {
+                                        try {
+                                            var fileName = 'backup_' + appLib.nowTime() + '.json';
+                                            dirEntry2.getFile(fileName, { create: true }, function (fileEntry) {
+                                                try {
+                                                    fileEntry.createWriter(function (fileWriter) {
+                                                        try {
+                                                            var blob = new Blob([JSON.stringify(t.backupData)], { type: 'text/plain' });
+                                                            fileWriter.write(blob);
+                                                        }
+                                                        catch (e) { }
+                                                    });
+                                                } catch (e) { }
+                                            });
+                                        }
+                                        catch (e) { }
+                                    });
+                                }
+                                catch (e) { }
+                            });
+                        }
+                        catch (e) { }
+                    }
                     break;
 
                 case 'show':
@@ -1397,6 +1426,8 @@
             };
         },
         backup: function (act, val1) {
+            var t = this;
+
             switch (act) {
                 case 'copy':
                     $('#backupContent').select();
@@ -1408,19 +1439,19 @@
                     cordova.plugins.email.open({
                         to: '',
                         subject: '바른재정관리 백업 데이터',
-                        body: this.temp.backup.backup.data
+                        body: t.temp.backup.backup.data
                     });
                     break;
 
                 case 'restore':
-                    var content = this.temp.backup.restore.data;
+                    var content = t.temp.backup.restore.data;
 
                     if (!content) {
                         appLib.bandMessage('warning', '데이터를 입력해주세요.', 3000);
                         return;
                     }
 
-                    if (this.set('data', content)) {
+                    if (t.set('data', content)) {
                         alert('데이터를 복원하였습니다.');
                         location.href = 'index.html';
                     }
@@ -1432,120 +1463,121 @@
                 case 'change':
                     switch (val1) {
                         case 'backup':
-                            var backupData = this.backupData;
+                            var backupData = t.backupData;
 
-                            if (this.temp.backup.backup.idx !== '')
-                                this.temp.backup.backup.data = JSON.stringify(backupData[this.temp.backup.backup.idx]);
+                            if (t.temp.backup.backup.idx !== '')
+                                t.temp.backup.backup.data = JSON.stringify(backupData[t.temp.backup.backup.idx]);
                             else
-                                this.temp.backup.backup.data = JSON.stringify(backupData);
+                                t.temp.backup.backup.data = JSON.stringify(backupData);
                             break;
                     }
                     break;
 
-                default:
-                    this.temp.backup.backup.idx = '';
-                    this.temp.backup.restore.data = '';
-                    this.temp.mode = 'backup';
-                    this.nav('close');
-                    this.modal('close');
-                    this.temp.backup.backup.data = JSON.stringify(this.backupData);
-                    break;
-            }
-        },
-        eximport: function (act) {
-            var t = this;
+                case 'auto':
+                    if (window.cordova) {
+                        var fileName = t.temp.backup.restore.auto;
 
-            switch (act) {
-                case 'export':
-                    var nowTime = appLib.nowTime();
-                    var fileName = 'backup_' + nowTime + '.json';
+                        if (!fileName) {
+                            appLib.bandMessage('warning', '복원할 데이터를 선택해주세요.', 3000);
+                            return;
+                        }
 
-                    window.resolveLocalFileSystemURL(cordova.file.externalApplicationStorageDirectory, function (dirEntry1) {
-                        dirEntry1.getDirectory('backups', { create: true }, function (dirEntry2) {
-                            dirEntry2.getFile(fileName, { create: true }, function (fileEntry) {
-                                fileEntry.createWriter(function (fileWriter) {
-                                    var blob;
-
-                                    fileWriter.onwriteend = function (e) {
-                                        var path = '/Android/data/org.africalib.finance/backups/' + fileName;
-                                        appLib.bandMessage('success', '내보내기를 완료하였습니다.', 3000);
-                                        t.temp.eximport.exportPath = path;
-                                        t.eximport('imports');
-                                    };
-
-                                    fileWriter.onerror = function (e) {
-                                        appLib.bandMessage('danger', '오류가 있습니다.#2', 0);
-                                    };
-
-                                    blob = new Blob([JSON.stringify(t.backupData)], { type: 'text/plain' });
-                                    fileWriter.write(blob);
-                                }, function () {
-                                    appLib.bandMessage('danger', '오류가 있습니다.#1', 0);
+                        if (confirm('선택하신 데이터(' + fileName + ')를 가져오시겠습니까?')) {
+                            window.resolveLocalFileSystemURL(cordova.file.externalApplicationStorageDirectory, function (dirEntry1) {
+                                dirEntry1.getDirectory('backups', { create: true }, function (dirEntry2) {
+                                    dirEntry2.getFile(fileName, {}, function (fileEntry) {
+                                        var reader = new FileReader();
+                                        fileEntry.file(function (file) {
+                                            reader.onloadend = function () {
+                                                if (t.set('data', this.result)) {
+                                                    alert('데이터를 가져왔습니다.');
+                                                    location.href = 'index.html';
+                                                }
+                                                else {
+                                                    appLib.bandMessage('warning', '입력하신 값이 유효하지 않습니다.', 3000);
+                                                }
+                                            };
+                                            reader.readAsText(file);
+                                        });
+                                    }, function (err) {
+                                        appLib.bandMessage('danger', '오류가 있습니다.#1', 0);
+                                    });
                                 });
                             });
-                        });
-                    });
+                        }
+                    }
                     break;
 
-                case 'import':
-                    var fileName = t.temp.eximport.import;
+                default:
+                    t.temp.backup.backup.idx = '';
+                    t.temp.backup.restore.data = '';
+                    t.temp.mode = 'backup';
+                    t.nav('close');
+                    t.modal('close');
+                    t.temp.backup.backup.data = JSON.stringify(t.backupData);
+                    t.temp.backup.backup.autos = [];
 
-                    if (confirm('선택하신 데이터(' + fileName + ')를 가져오시겠습니까?')) {
+                    if (window.cordova) {
                         window.resolveLocalFileSystemURL(cordova.file.externalApplicationStorageDirectory, function (dirEntry1) {
                             dirEntry1.getDirectory('backups', { create: true }, function (dirEntry2) {
-                                dirEntry2.getFile(fileName, {}, function (fileEntry) {
-                                    var reader = new FileReader();
-                                    fileEntry.file(function (file) {
-                                        reader.onloadend = function () {
-                                            if (t.set('data', this.result)) {
-                                                alert('데이터를 가져왔습니다.');
-                                                location.href = 'index.html';
+                                var reader = dirEntry2.createReader();
+                                reader.readEntries(
+                                    function (entries) {
+                                        if (entries && entries.length) {
+                                            var loopIdx = 1;
+
+                                            for (var i = entries.length - 1; i >= 0; i -= 1) {
+                                                if (entries[i].isFile && entries[i].name.indexOf('.json') > 0)
+                                                    t.temp.backup.backup.autos.push(entries[i].name);
+
+                                                if (loopIdx++ === 5)
+                                                    break;
                                             }
-                                            else {
-                                                appLib.bandMessage('warning', '입력하신 값이 유효하지 않습니다.', 3000);
-                                            }
-                                        };
-                                        reader.readAsText(file);
-                                    });
-                                }, function (err) {
-                                    appLib.bandMessage('danger', '오류가 있습니다.#1', 0);
-                                });
+                                        }
+                                    },
+                                    function (err) {
+                                        appLib.bandMessage('danger', '오류가 있습니다.#2', 0);
+                                    }
+                                );
+                            }, function (err) {
+                                appLib.bandMessage('danger', '오류가 있습니다.#1', 0);
                             });
                         });
                     }
+                    break;
+            }
+        },
+        online: function (act) {
+            switch (act) {
+                case 'uuid':
+                    if (!this.online.uuid && window.device) {
+                        this.online.uuid = device.uuid;
+                        this.$forceUpdate();
+                    }
 
-                    t.temp.eximport.import = '';
+                    if (this.online.uuid.length < 4) {
+                        appLib.bandMessage('warning', '아이디는 8자 이상으로 입력해주세요.', 5000);
+                        return;
+                    }
+
+                    this.private.uuid = this.online.uuid;
+                    this.set('storage', 'private', JSON.stringify(this.private));
+                    appLib.bandMessage('success', '적용하였습니다.', 3000);
                     break;
 
-                case 'imports':
-                    t.temp.eximport.imports = [];
+                case 'export':
+                    alert('export')
+                    break;
 
-                    window.resolveLocalFileSystemURL(cordova.file.externalApplicationStorageDirectory, function (dirEntry1) {
-                        dirEntry1.getDirectory('backups', { create: true }, function (dirEntry2) {
-                            var reader = dirEntry2.createReader();
-                            reader.readEntries(
-                                function (entries) {
-                                    for (var i in entries) {
-                                        if (entries[i].isFile && entries[i].name.indexOf('.json') > 0)
-                                            t.temp.eximport.imports.push(entries[i].name);
-                                    }
-                                },
-                                function (err) {
-                                    appLib.bandMessage('danger', '오류가 있습니다.#2', 0);
-                                }
-                            );
-                        }, function (err) {
-                            appLib.bandMessage('danger', '오류가 있습니다.#1', 0);
-                        });
-                    });
+                case 'import':
+                    alert('import')
                     break;
 
                 default:
-                    this.temp.mode = 'eximport';
+                    this.temp.mode = 'online';
                     this.nav('close');
                     this.modal('close');
-                    t.eximport('imports');
-                    t.temp.eximport.exportPath = '';
+                    this.online.uuid = this.private.uuid;
                     break;
             }
         },
@@ -1737,6 +1769,11 @@
         });
 
         document.addEventListener('deviceready', function () {
+            if (!t.private.uuid) {
+                t.private.uuid = device.uuid;
+                t.set('storage', 'private', JSON.stringify(t.private));
+            }
+
             document.addEventListener('backbutton', function () {
                 var hash = appLib.replaceAll(location.hash, '#', '');
                 var homeArr = ['', 'record'];
