@@ -10,12 +10,6 @@
                 <param name="android-package" value="com.example.sample.plugin.PluginName" />
             </feature>
         </config-file>
-        <config-file target="AndroidManifest.xml" parent="/manifest/application">
-            <activity android:label="New Activity" android:name="com.example.sample.plugin.NewActivity"></activity>
-        </config-file>
-        <config-file parent="/*" target="AndroidManifest.xml"></config-file>
         <source-file src="src/android/PluginName.java" target-dir="src/com/example/sample/plugin" />
-        <source-file src="src/android/NewActivity.java" target-dir="src/com/example/sample/plugin" />
-        <source-file src="src/android/activity_new.xml" target-dir="res/layout"/>
     </platform>
 </plugin>

@@ -1,0 +1,130 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <style>
+        .outer {
+            width: 450px;
+            height: 450px;
+            display: inline-block;
+            padding: 0 25px 25px 25px;
+            position: relative;
+            border-top: 25px solid #274c5e;
+        }
+
+            .outer .outer-line {
+                height: 452px;
+                width: 25px;
+                position: absolute;
+                background: #274c5e;
+                top: -3px;
+            }
+
+                .outer .outer-line.left {
+                    left: 16px;
+                    transform: rotate(-4deg);
+                }
+
+                .outer .outer-line.right {
+                    right: 16px;
+                    transform: rotate(4deg);
+                }
+
+                /*.outer .outer-line.bidge {
+                    right: 55px;
+                    top: 193px;
+                    height: 265px;
+                }
+
+                .outer .outer-line.left.bidge {
+                    left: 55px;
+                    transform: rotate(-25deg);
+                }
+
+                .outer .outer-line.right.bidge {
+                    transform: rotate(25deg);
+                    right: 55px;
+                }*/
+
+                .outer .outer-line.bottom {
+                    top: 425px;
+                    left: 32px;
+                    width: 435px;
+                    height: 25px;
+                }
+
+        .inner {
+            background: #fff;
+            display: inline-block;
+            text-align: center;
+            overflow: hidden;
+            padding: 0 30px;
+            height: 100%;
+        }
+
+        .each {
+            display: inline-block;
+            font-size: 0;
+            margin: 42px -20px;
+        }
+
+            .each span {
+                display: inline-block;
+                width: 66px;
+                height: 15px;
+                top: 15px;
+                position: relative;
+            }
+
+                .each span.left {
+                    left: 15px;
+                    background: #274c5d;
+                }
+
+                .each span.right {
+                    left: -15px;
+                    background: #07c;
+                }
+
+                .each span.right,
+                .each:nth-child(4n+1) span.left,
+                .each:nth-child(4n+3) span.left,
+                .each:nth-child(4n+5) span.left {
+                    transform: rotate(45deg);
+                }
+
+                .each span.left,
+                .each:nth-child(4n+1) span.right,
+                .each:nth-child(4n+3) span.right,
+                .each:nth-child(4n+5) span.right {
+                    transform: rotate(135deg);
+                }
+    </style>
+</head>
+<body>
+    <div class="outer">
+        <div class="outer-line left"></div>
+        <div class="outer-line right"></div>
+        <!--<div class="outer-line left bidge"></div>
+        <div class="outer-line right bidge"></div>-->
+        <div class="outer-line bottom"></div>
+        <div class="inner">
+            <div class="each"><span class="left"></span><span class="right"></span></div>
+            <div class="each"><span class="left"></span><span class="right"></span></div>
+            <div class="each"><span class="left"></span><span class="right"></span></div>
+            <div class="each"><span class="left"></span><span class="right"></span></div>
+            <div class="each"><span class="left"></span><span class="right"></span></div>
+            <div class="each"><span class="left"></span><span class="right"></span></div>
+            <div class="each"><span class="left"></span><span class="right"></span></div>
+            <div class="each"><span class="left"></span><span class="right"></span></div>
+            <div class="each"><span class="left"></span><span class="right"></span></div>
+            <div class="each"><span class="left"></span><span class="right"></span></div>
+            <div class="each"><span class="left"></span><span class="right"></span></div>
+            <div class="each"><span class="left"></span><span class="right"></span></div>
+            <div class="each"><span class="left"></span><span class="right"></span></div>
+            <div class="each"><span class="left"></span><span class="right"></span></div>
+            <div class="each"><span class="left"></span><span class="right"></span></div>
+            <div class="each"><span class="left"></span><span class="right"></span></div>
+        </div>
+    </div>
+</body>
+</html>

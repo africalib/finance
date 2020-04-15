@@ -24,6 +24,9 @@
     },
     "com.example.sample.plugin": {
       "PACKAGE_NAME": "org.africalib.finance"
+    },
+    "cordova-plugin-x-toast": {
+      "PACKAGE_NAME": "org.africalib.finance"
     }
   },
   "dependent_plugins": {}

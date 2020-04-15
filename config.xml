@@ -44,5 +44,6 @@
     <plugin name="cordova-plugin-email" spec="^1.2.7" />
     <plugin name="cordova-plugin-device" spec="^2.0.3" />
     <plugin name="com.example.sample.plugin" spec="D:\J\GitHub\repositories\finance\data\plugins\PluginName" />
+    <plugin name="cordova-plugin-x-toast" spec="^2.7.2" />
     <engine name="android" spec="^7.1.4" />
 </widget>

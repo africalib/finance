@@ -1,0 +1,34 @@
+﻿[
+  {
+    "name": "기본 정산",
+    "columns": [ "category", "bank", "memo" ],
+    "records": {
+      "2018-06-01": {
+        "2018-06-10": [
+          {
+            "category": "",
+            "bank": "",
+            "io": "in",
+            "money": 123400001,
+            "memo": null,
+            "isFinished": true,
+            "visible": true,
+            "date": "2018-06-10"
+          },
+          {
+            "category": "",
+            "bank": "",
+            "io": "out",
+            "money": 123,
+            "memo": null,
+            "isFinished": null,
+            "visible": true
+          }
+        ]
+      }
+    },
+    "categories": [],
+    "banks": [],
+    "sequence": 0
+  }
+]
