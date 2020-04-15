@@ -86,7 +86,8 @@
                 uuid: null
             },
             password: null,
-            passed: false
+            passed: false,
+            watched: false
         },
         private: {
             theme: 'navy',
@@ -116,10 +117,11 @@
                 location.hash = '';
                 return;
             }
-            else if (hash === 'backup' || hash === 'online') {
+            else if (!this.temp.watched && (hash === 'backup' || hash === 'online')) {
                 if (confirm('이 페이지는 광고 시청 후 이용이 가능합니다. 이동하시겠습니까?')) {
-                    time = 1000;
+                    time = 2500;
                     PluginName.new_activity();
+                    this.temp.watched = true;
                 }
                 else {
                     return;

@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget android-versionCode="11001" id="org.africalib.finance" version="1.0.11" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget android-versionCode="11004" id="org.africalib.finance" version="1.1.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>바른재정관리</name>
     <description>바른재정관리 애플리케이션</description>
     <author email="africalibrary21@gmail.com" href="http://africalib.tistory.com/">아프리카도서관</author>

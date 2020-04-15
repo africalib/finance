@@ -39,7 +39,7 @@
             window.plugins.toast.hide();
             window.plugins.toast.showWithOptions({
                 message: paramMessage,
-                duration: 'long',
+                duration: paramTimeout ? paramTimeout : 'long',
                 position: 'bottom',
                 addPixelsY: -40
             }, function () { }, function () { });

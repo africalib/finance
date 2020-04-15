@@ -11,5 +11,6 @@
             </feature>
         </config-file>
         <source-file src="src/android/PluginName.java" target-dir="src/com/example/sample/plugin" />
+        <source-file src="src/android/NewActivity.java" target-dir="src/com/example/sample/plugin" />
     </platform>
 </plugin>
