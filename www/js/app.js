@@ -110,9 +110,20 @@
     watch: {},
     methods: {
         go: function (hash) {
+            var time = 0;
+
             if (!hash) {
                 location.hash = '';
                 return;
+            }
+            else if (hash === 'backup' || hash === 'online') {
+                if (confirm('이 페이지는 광고 시청 후 이용이 가능합니다. 이동하시겠습니까?')) {
+                    time = 1000;
+                    PluginName.new_activity();
+                }
+                else {
+                    return;
+                }
             }
             else if (hash === 'store') {
                 window.open('https://play.google.com/store/apps/details?id=org.africalib.finance', '');
@@ -123,7 +134,14 @@
             if (location.hash === '#' + hash)
                 hash += '/';
 
-            location.hash = hash;
+            if (!time) {
+                location.hash = hash;
+            }
+            else {
+                setTimeout(function () {
+                    location.hash = hash;
+                }, time)
+            }
         },
         get: function (act, val1, val2) {
             var t = this;

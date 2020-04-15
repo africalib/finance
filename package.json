@@ -10,6 +10,7 @@
   "author": "Apache Cordova Team",
   "license": "Apache-2.0",
   "dependencies": {
+    "com.example.sample.plugin": "file:data/plugins/PluginName",
     "cordova-android": "^7.1.4",
     "cordova-plugin-device": "^2.0.3",
     "cordova-plugin-email": "^1.2.7",
@@ -23,7 +24,8 @@
       "cordova-plugin-splashscreen": {},
       "cordova-plugin-file": {},
       "cordova-plugin-email": {},
-      "cordova-plugin-device": {}
+      "cordova-plugin-device": {},
+      "com.example.sample.plugin": {}
     },
     "platforms": [
       "android"

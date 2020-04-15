@@ -21,6 +21,9 @@
     },
     "cordova-plugin-device": {
       "PACKAGE_NAME": "org.africalib.finance"
+    },
+    "com.example.sample.plugin": {
+      "PACKAGE_NAME": "org.africalib.finance"
     }
   },
   "dependent_plugins": {}

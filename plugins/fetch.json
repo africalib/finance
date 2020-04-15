@@ -38,5 +38,13 @@
     },
     "is_top_level": true,
     "variables": {}
+  },
+  "com.example.sample.plugin": {
+    "source": {
+      "type": "local",
+      "path": "D:\\J\\GitHub\\repositories\\finance\\node_modules\\com.example.sample.plugin"
+    },
+    "is_top_level": true,
+    "variables": {}
   }
 }

@@ -1,0 +1,17 @@
+{
+  "name": "com.example.sample.plugin",
+  "version": "0.0.1",
+  "description": "",
+  "cordova": {
+    "id": "com.example.sample.plugin",
+    "platforms": [
+      "android"
+    ]
+  },
+  "keywords": [
+    "ecosystem:cordova",
+    "cordova-android"
+  ],
+  "author": "",
+  "license": "ISC"
+}
