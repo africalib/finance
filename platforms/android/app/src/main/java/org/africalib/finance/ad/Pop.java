@@ -76,7 +76,7 @@ public class Pop extends Activity {
 
             @Override
             public void onRewardedVideoAdFailedToLoad(int errorCode) {
-                Toast.makeText(getApplicationContext(), "광고 영상이 없습니다.", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "광고 영상이 없습니다(code: " + errorCode + ").", Toast.LENGTH_LONG).show();
                 finish();
                 //Toast.makeText(getApplicationContext(), "VideoAdFailedToLoad", Toast.LENGTH_SHORT).show();
             }

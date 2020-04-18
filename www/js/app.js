@@ -3,6 +3,7 @@
     data: {
         temp: {
             mode: 'record',
+            uuid: null,
             nav: {
                 visible: false
             },
@@ -94,8 +95,7 @@
                 uuid: null
             },
             password: null,
-            passed: false,
-            watched: false
+            passed: false
         },
         private: {
             theme: 'navy',
@@ -121,17 +121,20 @@
         go: function (hash) {
             var time = 0;
             var ads = ['backup', 'online', 'download'];
+            //var uuids = ['926359966731360c'];
+            var uuids = [];
+            var watched = sessionStorage.getItem('watched');
 
             if (!hash) {
                 location.hash = '';
                 return;
             }
-            else if (!this.temp.watched && ads.indexOf(hash) >= 0) {
+            else if (watched !== 'Y' && ads.indexOf(hash) >= 0 && uuids.indexOf(this.temp.uuid) < 0) {
                 if (window.Ad) {
                     if (confirm('이 페이지는 광고 시청 후 이용이 가능합니다. 이동하시겠습니까?')) {
                         time = 500;
                         Ad.pop();
-                        this.temp.watched = true;
+                        sessionStorage.setItem('watched', 'Y');
                     }
                     else {
                         return;
@@ -1866,6 +1869,9 @@
         });
 
         document.addEventListener('deviceready', function () {
+            //$('body').prepend('<h1>' + device.uuid + '</h1>');
+            t.temp.uuid = device.uuid;
+
             if (!t.private.uuid) {
                 t.private.uuid = device.uuid;
                 t.set('storage', 'private', JSON.stringify(t.private));
