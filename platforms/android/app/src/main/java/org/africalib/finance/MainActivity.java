@@ -36,6 +36,7 @@ public class MainActivity extends CordovaActivity {
 
         Global.appView = appView;
         Global.launchUrl = launchUrl;
+        Global.mainActivity = this;
 
         // Set by <content src="index.html" /> in config.xml
         loadUrl(launchUrl);
