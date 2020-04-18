@@ -11,6 +11,7 @@
     <allow-intent href="sms:*" />
     <allow-intent href="mailto:*" />
     <allow-intent href="geo:*" />
+    <allow-navigation href="https://africalibrary21.cafe24.com/*" />
     <preference name="orientation" value="portrait" />
     <platform name="android">
         <preference name="android-minSdkVersion" value="21" />
@@ -45,5 +46,6 @@
     <plugin name="cordova-plugin-device" spec="^2.0.3" />
     <plugin name="com.example.sample.plugin" spec="D:\J\GitHub\repositories\finance\data\plugins\PluginName" />
     <plugin name="cordova-plugin-x-toast" spec="^2.7.2" />
+    <plugin name="cordova-plugin-inappbrowser" spec="^3.2.0" />
     <engine name="android" spec="^7.1.4" />
 </widget>

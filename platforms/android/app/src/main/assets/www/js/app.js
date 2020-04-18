@@ -1463,7 +1463,7 @@
             };
         },
         download: function (act) {
-            var data;
+            var data, args;
             var $form = $(this.$refs.form);
 
             switch (act) {
@@ -1473,11 +1473,21 @@
                     }
                     else {
                         data = this.protected[this.temp.download.csv.idx];
-                        $form.attr('action', 'http://africalibrary21.cafe24.com/finance/index.php');
-                        $form.find('input[name=ctrl]').val('download');
-                        $form.find('input[name=act]').val('csv');
-                        $form.find('input[name=val]').val(JSON.stringify(data));
-                        $form.submit();
+                        args = {
+                            ctrl: 'create',
+                            act: 'csv',
+                            val: JSON.stringify(data)
+                        };
+
+                        $.post('https://africalibrary21.cafe24.com/finance/index.php', args).then(function (res) {
+                            if (res) {
+                                var url = 'https://africalibrary21.cafe24.com/finance/index.php?ctrl=download&act=file&val=' + res;
+                                if (window.cordova && window.cordova.InAppBrowser)
+                                    cordova.InAppBrowser.open(url, '_system', 'location=yes');
+                                else
+                                    window.open(url, '');
+                            }
+                        });
                     }
                     break;
 
@@ -1487,11 +1497,21 @@
                     }
                     else {
                         data = this.protected[this.temp.download.json.idx];
-                        $form.attr('action', 'http://africalibrary21.cafe24.com/finance/index.php');
-                        $form.find('input[name=ctrl]').val('download');
-                        $form.find('input[name=act]').val('json');
-                        $form.find('input[name=val]').val(JSON.stringify(data));
-                        $form.submit();
+                        args = {
+                            ctrl: 'create',
+                            act: 'json',
+                            val: JSON.stringify(data)
+                        };
+
+                        $.post('https://africalibrary21.cafe24.com/finance/index.php', args).then(function (res) {
+                            if (res) {
+                                var url = 'https://africalibrary21.cafe24.com/finance/index.php?ctrl=download&act=file&val=' + res;
+                                if (window.cordova && window.cordova.InAppBrowser)
+                                    cordova.InAppBrowser.open(url, '_system', 'location=yes');
+                                else
+                                    window.open(url, '');
+                            }
+                        });
                     }
                     break;
 
