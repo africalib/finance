@@ -22,13 +22,13 @@
     "cordova-plugin-device": {
       "PACKAGE_NAME": "org.africalib.finance"
     },
-    "com.example.sample.plugin": {
-      "PACKAGE_NAME": "org.africalib.finance"
-    },
     "cordova-plugin-x-toast": {
       "PACKAGE_NAME": "org.africalib.finance"
     },
     "cordova-plugin-inappbrowser": {
+      "PACKAGE_NAME": "org.africalib.finance"
+    },
+    "org.africalib.finance.ad": {
       "PACKAGE_NAME": "org.africalib.finance"
     }
   },

@@ -199,14 +199,6 @@ module.exports = [
     ]
   },
   {
-    "id": "com.example.sample.plugin.PluginName",
-    "file": "plugins/com.example.sample.plugin/www/PluginName.js",
-    "pluginId": "com.example.sample.plugin",
-    "clobbers": [
-      "PluginName"
-    ]
-  },
-  {
     "id": "cordova-plugin-x-toast.Toast",
     "file": "plugins/cordova-plugin-x-toast/www/Toast.js",
     "pluginId": "cordova-plugin-x-toast",
@@ -222,6 +214,14 @@ module.exports = [
       "cordova.InAppBrowser.open",
       "window.open"
     ]
+  },
+  {
+    "id": "org.africalib.finance.ad.Ad",
+    "file": "plugins/org.africalib.finance.ad/www/Ad.js",
+    "pluginId": "org.africalib.finance.ad",
+    "clobbers": [
+      "Ad"
+    ]
   }
 ];
 module.exports.metadata = 
@@ -232,9 +232,9 @@ module.exports.metadata =
   "cordova-plugin-splashscreen": "5.0.2",
   "cordova-plugin-whitelist": "1.3.3",
   "cordova-plugin-device": "2.0.3",
-  "com.example.sample.plugin": "0.0.1",
   "cordova-plugin-x-toast": "2.7.2",
-  "cordova-plugin-inappbrowser": "3.2.0"
+  "cordova-plugin-inappbrowser": "3.2.0",
+  "org.africalib.finance.ad": "0.0.1"
 };
 // BOTTOM OF METADATA
 });

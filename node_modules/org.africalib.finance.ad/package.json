@@ -1,0 +1,17 @@
+{
+  "name": "org.africalib.finance.ad",
+  "version": "0.0.1",
+  "description": "",
+  "cordova": {
+    "id": "org.africalib.finance.ad",
+    "platforms": [
+      "android"
+    ]
+  },
+  "keywords": [
+    "ecosystem:cordova",
+    "cordova-android"
+  ],
+  "author": "",
+  "license": "ISC"
+}

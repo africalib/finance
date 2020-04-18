@@ -19,14 +19,14 @@
     <feature name="Device">
         <param name="android-package" value="org.apache.cordova.device.Device" />
     </feature>
-    <feature name="PluginName">
-        <param name="android-package" value="com.example.sample.plugin.PluginName" />
-    </feature>
     <feature name="Toast">
         <param name="android-package" value="nl.xservices.plugins.Toast" />
     </feature>
     <feature name="InAppBrowser">
         <param name="android-package" value="org.apache.cordova.inappbrowser.InAppBrowser" />
+    </feature>
+    <feature name="Ad">
+        <param name="android-package" value="org.africalib.finance.ad.Ad" />
     </feature>
     <name>바른재정관리</name>
     <description>바른재정관리 애플리케이션</description>

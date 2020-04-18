@@ -127,10 +127,10 @@
                 return;
             }
             else if (!this.temp.watched && ads.indexOf(hash) >= 0) {
-                if (window.PluginName) {
+                if (window.Ad) {
                     if (confirm('이 페이지는 광고 시청 후 이용이 가능합니다. 이동하시겠습니까?')) {
-                        time = 2500;
-                        PluginName.new_activity();
+                        time = 500;
+                        Ad.pop();
                         this.temp.watched = true;
                     }
                     else {
@@ -139,7 +139,7 @@
                 }
             }
             else if (hash === 'store') {
-                window.open('https://play.google.com/store/apps/details?id=org.africalib.finance', '');
+                location.href = 'https://play.google.com/store/apps/details?id=org.africalib.finance'
                 this.nav('close');
                 return;
             }

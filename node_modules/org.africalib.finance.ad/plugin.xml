@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='utf-8'?>
+<plugin id="org.africalib.finance.ad" version="0.0.1" xmlns="http://apache.org/cordova/ns/plugins/1.0" xmlns:android="http://schemas.android.com/apk/res/android">
+    <name>Ad</name>
+    <js-module name="Ad" src="www/Ad.js">
+        <clobbers target="Ad" />
+    </js-module>
+    <platform name="android">
+        <config-file parent="/*" target="res/xml/config.xml">
+            <feature name="Ad">
+                <param name="android-package" value="org.africalib.finance.ad.Ad" />
+            </feature>
+        </config-file>
+        <config-file target="AndroidManifest.xml" parent="/manifest/application">
+			<activity
+				android:name="org.africalib.finance.ad.Pop"
+				android:label="Pop"
+				android:screenOrientation="portrait"
+				android:theme="@android:style/Theme.DeviceDefault.NoActionBar" />
+			<meta-data
+				android:name="com.google.android.gms.version"
+				android:value="@integer/google_play_services_version" />
+			<meta-data
+				android:name="com.google.android.gms.ads.APPLICATION_ID"
+				android:value="@string/admob_app_id" />
+        </config-file>
+        <config-file parent="/*" target="AndroidManifest.xml"></config-file>
+        <source-file src="src/android/Ad.java" target-dir="src/org/africalib/finance/ad" />
+        <source-file src="src/android/Pop.java" target-dir="src/org/africalib/finance/ad" />
+    </platform>
+</plugin>
