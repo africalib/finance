@@ -82,6 +82,14 @@
                     auto: ''
                 }
             },
+            download: {
+                csv: {
+                    idx: ''
+                },
+                json: {
+                    idx: ''
+                }
+            },
             online: {
                 uuid: null
             },
@@ -112,19 +120,22 @@
     methods: {
         go: function (hash) {
             var time = 0;
+            var ads = ['backup', 'online', 'download'];
 
             if (!hash) {
                 location.hash = '';
                 return;
             }
-            else if (!this.temp.watched && (hash === 'backup' || hash === 'online')) {
-                if (confirm('이 페이지는 광고 시청 후 이용이 가능합니다. 이동하시겠습니까?')) {
-                    time = 2500;
-                    PluginName.new_activity();
-                    this.temp.watched = true;
-                }
-                else {
-                    return;
+            else if (!this.temp.watched && ads.indexOf(hash) >= 0) {
+                if (window.PluginName) {
+                    if (confirm('이 페이지는 광고 시청 후 이용이 가능합니다. 이동하시겠습니까?')) {
+                        time = 2500;
+                        PluginName.new_activity();
+                        this.temp.watched = true;
+                    }
+                    else {
+                        return;
+                    }
                 }
             }
             else if (hash === 'store') {
@@ -315,6 +326,9 @@
                                 case 'backup':
                                     return '데이터 백업/복원';
 
+                                case 'download':
+                                    return '데이터 다운로드(csv, json)';
+
                                 case 'online':
                                     return '데이터 온라인 백업/복원';
 
@@ -351,6 +365,9 @@
 
                                 case 'online':
                                     return 'cloud-upload';
+
+                                case 'download':
+                                    return 'cloud-download';
 
                                 case 'reset':
                                     return 'eraser';
@@ -1444,6 +1461,46 @@
                         this[act]();
                     break;
             };
+        },
+        download: function (act) {
+            var data;
+            var $form = $(this.$refs.form);
+
+            switch (act) {
+                case 'csv':
+                    if (this.temp.download.csv.idx === '') {
+                        appLib.bandMessage('warning', '다운로드하실 데이터를 선택해주세요.', 3000);
+                    }
+                    else {
+                        data = this.protected[this.temp.download.csv.idx];
+                        $form.attr('action', 'http://africalibrary21.cafe24.com/finance/index.php');
+                        $form.find('input[name=ctrl]').val('download');
+                        $form.find('input[name=act]').val('csv');
+                        $form.find('input[name=val]').val(JSON.stringify(data));
+                        $form.submit();
+                    }
+                    break;
+
+                case 'json':
+                    if (this.temp.download.json.idx === '') {
+                        appLib.bandMessage('warning', '다운로드하실 데이터를 선택해주세요.', 3000);
+                    }
+                    else {
+                        data = this.protected[this.temp.download.json.idx];
+                        $form.attr('action', 'http://africalibrary21.cafe24.com/finance/index.php');
+                        $form.find('input[name=ctrl]').val('download');
+                        $form.find('input[name=act]').val('json');
+                        $form.find('input[name=val]').val(JSON.stringify(data));
+                        $form.submit();
+                    }
+                    break;
+
+                default:
+                    this.temp.mode = 'download';
+                    this.nav('close');
+                    this.modal('close');
+                    break;
+            }
         },
         backup: function (act, val1) {
             var t = this;
