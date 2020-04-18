@@ -254,6 +254,58 @@
                     localStorage.setItem(val1, val2);
                     break;
 
+                case 'json':
+                    var run = function () {
+                        if (typeof val1 === 'function')
+                            val1();
+                    };
+
+                    if (window.cordova) {
+                        try {
+                            var t = this;
+
+                            window.resolveLocalFileSystemURL(cordova.file.externalApplicationStorageDirectory, function (dirEntry1) {
+                                try {
+                                    dirEntry1.getDirectory('backups', { create: true }, function (dirEntry2) {
+                                        try {
+                                            var fileName = appLib.nowTime() + '.json';
+
+                                            dirEntry2.getFile(fileName, { create: true }, function (fileEntry) {
+                                                try {
+                                                    fileEntry.createWriter(function (fileWriter) {
+                                                        try {
+                                                            var blob = new Blob([JSON.stringify(t.backupData)], { type: 'text/plain' });
+                                                            fileWriter.write(blob);
+                                                            run();
+                                                        }
+                                                        catch (e) {
+                                                            run();
+                                                        }
+                                                    });
+                                                } catch (e) {
+                                                    run();
+                                                }
+                                            });
+                                        }
+                                        catch (e) {
+                                            run();
+                                        }
+                                    });
+                                }
+                                catch (e) {
+                                    run();
+                                }
+                            });
+                        }
+                        catch (e) {
+                            run();
+                        }
+                    }
+                    else {
+                        run();
+                    }
+                    break;
+
                 case 'data':
                     try {
                         var data = JSON.parse(val1);
@@ -291,7 +343,9 @@
 
                         return true;
                     }
-                    catch (e) { }
+                    catch (e) {
+                        alert(e);
+                    }
 
                     return false;
             }
@@ -401,6 +455,7 @@
         },
         modal: function (act, type, val1, val2) {
             var t = this;
+
             switch (act) {
                 case 'visible':
                     return t.temp.modal.el.hasClass('show');
@@ -579,7 +634,7 @@
                                 appLib.bandMessage('warning', '금액을 입력해주세요.', 3000);
                                 return;
                             }
-                            else if (!Number(t.temp.modal.record.money)) {
+                            else if (isNaN(Number(t.temp.modal.record.money))) {
                                 appLib.bandMessage('warning', '금액 값을 확인해주세요.', 3000);
                                 return;
                             }
@@ -827,34 +882,7 @@
                     t.modal('close');
                     t.$forceUpdate();
                     appLib.bandMessage('success', '저장하였습니다.', 3000);
-
-                    if (window.cordova) {
-                        try {
-                            window.resolveLocalFileSystemURL(cordova.file.externalApplicationStorageDirectory, function (dirEntry1) {
-                                try {
-                                    dirEntry1.getDirectory('backups', { create: true }, function (dirEntry2) {
-                                        try {
-                                            var fileName = 'backup_' + appLib.nowTime() + '.json';
-                                            dirEntry2.getFile(fileName, { create: true }, function (fileEntry) {
-                                                try {
-                                                    fileEntry.createWriter(function (fileWriter) {
-                                                        try {
-                                                            var blob = new Blob([JSON.stringify(t.backupData)], { type: 'text/plain' });
-                                                            fileWriter.write(blob);
-                                                        }
-                                                        catch (e) { }
-                                                    });
-                                                } catch (e) { }
-                                            });
-                                        }
-                                        catch (e) { }
-                                    });
-                                }
-                                catch (e) { }
-                            });
-                        }
-                        catch (e) { }
-                    }
+                    t.set('json');
                     break;
 
                 case 'show':
@@ -980,6 +1008,7 @@
 
                         appLib.bandMessage('success', '삭제하였습니다.', 3000);
                         t.modal('close');
+                        t.set('json');
                     }
                     break;
             }
@@ -1095,7 +1124,7 @@
 
                 case 'delete':
                     if (confirm('선택하신 날짜(' + val2 + ')의 데이터를 삭제하시겠습니까?')) {
-                        var monthRecords = this.protected[this.private.idx].records[val1];
+                        var monthRecords = t.protected[t.private.idx].records[val1];
                         var dayRecords = monthRecords[val2];
 
                         for (var i = dayRecords.length - 1; i >= 0; --i) {
@@ -1106,10 +1135,11 @@
                         if (dayRecords.length === 0)
                             delete monthRecords[val2];
 
-                        this.record('update');
-                        this.set('storage', 'protected', JSON.stringify(t.protected));
+                        t.record('update');
+                        t.set('storage', 'protected', JSON.stringify(t.protected));
 
                         appLib.bandMessage('success', '삭제하였습니다.', 3000);
+                        t.set('json');
                     }
                     break;
 
@@ -1553,7 +1583,9 @@
 
                     if (t.set('data', content)) {
                         alert('데이터를 복원하였습니다.');
-                        location.href = 'index.html';
+                        t.set('json', function () {
+                            location.href = 'index.html';
+                        });
                     }
                     else {
                         appLib.bandMessage('warning', '입력하신 값이 유효하지 않습니다.', 3000);
@@ -1630,7 +1662,7 @@
                                                 if (entries[i].isFile && entries[i].name.indexOf('.json') > 0)
                                                     t.temp.backup.backup.autos.push(entries[i].name);
 
-                                                if (loopIdx++ === 5)
+                                                if (loopIdx++ === 10)
                                                     break;
                                             }
                                         }

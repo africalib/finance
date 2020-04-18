@@ -86,11 +86,7 @@
 
     nowTime: function () {
         var date = new Date();
-        var pad2 = function (n) {
-            return n < 10 ? '0' + n : n;
-        };
-
-        return date.getFullYear().toString() + '-' + pad2(date.getMonth() + 1) + '-' + pad2(date.getDate()) + '_' + pad2(date.getHours()) + '-' + pad2(date.getMinutes()) + '-' + pad2(date.getSeconds());
+        return date.getFullYear().toString().substring(2, 4) + '년 ' + (date.getMonth() + 1) + '월 ' + date.getDate() + '일 ' + date.getHours() + '시 ' + date.getMinutes() + '분 ' + date.getSeconds() + '초';
     },
 
     renew: function (val) {

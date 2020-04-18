@@ -435,7 +435,7 @@
                             <div class="backup-action mt-0">
                                 <select class="form-control" v-model="temp.backup.restore.auto">
                                     <option value="">선택</option>
-                                    <option v-for="d in temp.backup.backup.autos" v-bind:value="d">{{ d }}</option>
+                                    <option v-for="d in temp.backup.backup.autos" v-bind:value="d">{{ d.replace('.json', '') }}</option>
                                 </select>
                                 <button class="btn" v-bind:class="'btn-' + theme('get')" type="button" v-on:click="backup('auto')">복원</button>
                             </div>
