@@ -1,0 +1,644 @@
+﻿[
+  {
+    "name": "급여 통장",
+    "columns": [ "category", "bank", "memo" ],
+    "records": {
+      "2018-06-01": {
+        "2018-06-01": [
+          {
+            "category": 6,
+            "bank": 2,
+            "io": "out",
+            "money": 300000,
+            "memo": "십일조",
+            "visible": true
+          },
+          {
+            "category": 6,
+            "bank": 2,
+            "io": "out",
+            "money": 50000,
+            "memo": "건축 헌금",
+            "visible": true
+          },
+          {
+            "category": 7,
+            "bank": 8,
+            "io": "out",
+            "money": 120000,
+            "memo": "아내",
+            "visible": true,
+            "isFinished": true
+          },
+          {
+            "category": 7,
+            "bank": 9,
+            "io": "out",
+            "money": 200000,
+            "memo": "남편",
+            "visible": true,
+            "isFinished": true
+          },
+          {
+            "category": 10,
+            "bank": 11,
+            "io": "out",
+            "money": 70000,
+            "memo": "남편",
+            "visible": true,
+            "isFinished": true
+          },
+          {
+            "category": 10,
+            "bank": 12,
+            "io": "out",
+            "money": 80000,
+            "memo": "아내",
+            "visible": true,
+            "isFinished": true
+          },
+          {
+            "category": 13,
+            "bank": 11,
+            "io": "out",
+            "money": 50000,
+            "memo": "남편",
+            "visible": true,
+            "isFinished": true
+          },
+          {
+            "category": 13,
+            "bank": 8,
+            "io": "out",
+            "money": 10000,
+            "memo": "아내",
+            "visible": true,
+            "isFinished": true
+          },
+          {
+            "category": 14,
+            "bank": 2,
+            "io": "out",
+            "money": 200000,
+            "memo": null,
+            "visible": true
+          },
+          {
+            "category": 15,
+            "bank": 16,
+            "io": "out",
+            "money": 100000,
+            "memo": "자녀",
+            "visible": true,
+            "isFinished": true
+          },
+          {
+            "category": 17,
+            "bank": 12,
+            "io": "out",
+            "money": 30000,
+            "memo": "아내",
+            "visible": true,
+            "isFinished": true
+          },
+          {
+            "category": 6,
+            "bank": 12,
+            "io": "out",
+            "money": 20000,
+            "memo": "새물결선교회 후원",
+            "visible": true,
+            "isFinished": true
+          },
+          {
+            "category": 18,
+            "bank": 11,
+            "io": "out",
+            "money": 150000,
+            "memo": null,
+            "visible": true,
+            "isFinished": true
+          },
+          {
+            "category": 17,
+            "bank": 19,
+            "io": "out",
+            "money": 20000,
+            "memo": "아내",
+            "visible": true,
+            "isFinished": true
+          },
+          {
+            "category": 17,
+            "bank": 11,
+            "io": "out",
+            "money": 340000,
+            "memo": null,
+            "visible": true,
+            "isFinished": true
+          },
+          {
+            "category": 15,
+            "bank": 11,
+            "io": "out",
+            "money": 120000,
+            "memo": "청약",
+            "visible": true,
+            "isFinished": true
+          },
+          {
+            "category": 20,
+            "bank": 2,
+            "io": "out",
+            "money": 100000,
+            "memo": "부모님 용돈",
+            "visible": true
+          },
+          {
+            "category": 21,
+            "bank": 22,
+            "io": "out",
+            "money": 400000,
+            "memo": null,
+            "visible": true,
+            "isFinished": true
+          },
+          {
+            "category": 15,
+            "bank": 23,
+            "io": "out",
+            "money": 100000,
+            "memo": null,
+            "visible": true,
+            "isFinished": true
+          },
+          {
+            "category": 10,
+            "bank": 11,
+            "io": "out",
+            "money": 20000,
+            "memo": "인터넷",
+            "visible": true,
+            "isFinished": true
+          },
+          {
+            "category": 5,
+            "bank": 11,
+            "io": "out",
+            "money": 30000,
+            "memo": "식기세척기",
+            "visible": true,
+            "isFinished": true
+          },
+          {
+            "category": 15,
+            "bank": 24,
+            "io": "out",
+            "money": 150000,
+            "memo": null,
+            "visible": true
+          },
+          {
+            "category": 26,
+            "bank": 2,
+            "io": "out",
+            "money": 100000,
+            "memo": "건이 생일",
+            "visible": true,
+            "isFinished": true
+          },
+          {
+            "category": 27,
+            "bank": 2,
+            "io": "out",
+            "money": 100000,
+            "memo": "주원이 돌 잔치",
+            "visible": true,
+            "isFinished": true
+          },
+          {
+            "category": 21,
+            "bank": 22,
+            "io": "out",
+            "money": 400000,
+            "memo": "이유식 물품 구입",
+            "visible": true,
+            "isFinished": true
+          },
+          {
+            "category": 30,
+            "bank": 2,
+            "io": "in",
+            "money": 50000,
+            "memo": "여선교회에서 주안이 100일 축하",
+            "isFinished": true,
+            "visible": true
+          },
+          {
+            "category": 20,
+            "bank": 2,
+            "io": "out",
+            "money": 100000,
+            "memo": "처남 생일",
+            "isFinished": true,
+            "visible": true
+          }
+        ]
+      },
+      "2018-05-01": {
+        "2018-05-31": [
+          {
+            "category": 4,
+            "bank": 2,
+            "io": "out",
+            "money": 20000000,
+            "memo": "",
+            "visible": true,
+            "isFinished": true
+          },
+          {
+            "category": 5,
+            "bank": 2,
+            "io": "in",
+            "money": 1000000,
+            "memo": "기존 수입 이월",
+            "visible": true,
+            "isFinished": true
+          },
+          {
+            "category": 3,
+            "bank": 2,
+            "io": "in",
+            "money": 2800000,
+            "memo": null,
+            "visible": true,
+            "isFinished": true
+          },
+          {
+            "category": 25,
+            "bank": 2,
+            "io": "in",
+            "money": 200000,
+            "memo": "육아 지원금",
+            "visible": true,
+            "isFinished": true
+          }
+        ]
+      }
+    },
+    "categories": [
+      {
+        "u": 18,
+        "value": "공과"
+      },
+      {
+        "u": 13,
+        "value": "교통"
+      },
+      {
+        "u": 30,
+        "value": "교회"
+      },
+      {
+        "u": 3,
+        "value": "급여"
+      },
+      {
+        "u": 5,
+        "value": "기타"
+      },
+      {
+        "u": 4,
+        "value": "대출"
+      },
+      {
+        "u": 17,
+        "value": "보험"
+      },
+      {
+        "u": 21,
+        "value": "생활"
+      },
+      {
+        "u": 7,
+        "value": "용돈"
+      },
+      {
+        "u": 14,
+        "value": "월세"
+      },
+      {
+        "u": 15,
+        "value": "적금"
+      },
+      {
+        "u": 25,
+        "value": "정부"
+      },
+      {
+        "u": 20,
+        "value": "처가"
+      },
+      {
+        "u": 26,
+        "value": "친가"
+      },
+      {
+        "u": 10,
+        "value": "통신"
+      },
+      {
+        "u": 27,
+        "value": "행사"
+      },
+      {
+        "u": 6,
+        "value": "헌금"
+      }
+    ],
+    "banks": [
+      {
+        "u": 12,
+        "value": "국민(고정)"
+      },
+      {
+        "u": 8,
+        "value": "국민(용돈)"
+      },
+      {
+        "u": 19,
+        "value": "농협(보험)"
+      },
+      {
+        "u": 11,
+        "value": "신한(고정)"
+      },
+      {
+        "u": 22,
+        "value": "우리(생활)"
+      },
+      {
+        "u": 2,
+        "value": "하나(급여)"
+      },
+      {
+        "u": 9,
+        "value": "하나(용돈)"
+      },
+      {
+        "u": 16,
+        "value": "하나(자녀)"
+      },
+      {
+        "u": 23,
+        "value": "하나(적금)"
+      },
+      {
+        "u": 24,
+        "value": "하나(처가)"
+      }
+    ],
+    "sequence": 34
+  },
+  {
+    "name": "용돈기입장",
+    "columns": [ "category", "bank", "memo" ],
+    "records": {
+      "2018-06-01": {
+        "2018-06-01": [
+          {
+            "category": 1,
+            "bank": 2,
+            "io": "in",
+            "money": 130000,
+            "memo": null,
+            "isFinished": true,
+            "visible": true
+          },
+          {
+            "category": 3,
+            "bank": "",
+            "io": "out",
+            "money": 5000,
+            "memo": null,
+            "isFinished": null,
+            "visible": true
+          },
+          {
+            "category": 4,
+            "bank": "",
+            "io": "out",
+            "money": 10000,
+            "memo": null,
+            "isFinished": null,
+            "visible": true
+          },
+          {
+            "category": 5,
+            "bank": "",
+            "io": "out",
+            "money": 15000,
+            "memo": null,
+            "isFinished": null,
+            "visible": true
+          }
+        ],
+        "2018-06-04": [
+          {
+            "category": 6,
+            "bank": "",
+            "io": "out",
+            "money": 4000,
+            "memo": null,
+            "isFinished": null,
+            "visible": true
+          }
+        ]
+      }
+    },
+    "categories": [
+      {
+        "u": 5,
+        "value": "6여전도회 회비"
+      },
+      {
+        "u": 4,
+        "value": "군선교"
+      },
+      {
+        "u": 3,
+        "value": "다음세대"
+      },
+      {
+        "u": 1,
+        "value": "용돈"
+      },
+      {
+        "u": 6,
+        "value": "음료수"
+      }
+    ],
+    "banks": [
+      {
+        "u": 2,
+        "value": "국민은행(879602-01-106000)"
+      }
+    ],
+    "sequence": 6
+  },
+  {
+    "name": "가계부",
+    "columns": [ "category", "bank", "memo" ],
+    "records": {
+      "2018-06-01": {
+        "2018-06-01": [
+          {
+            "category": 1,
+            "bank": 2,
+            "io": "in",
+            "money": 800000,
+            "memo": null,
+            "isFinished": true,
+            "visible": true
+          }
+        ],
+        "2018-06-02": [
+          {
+            "category": 3,
+            "bank": "",
+            "io": "out",
+            "money": 120500,
+            "memo": null,
+            "isFinished": null,
+            "visible": true
+          },
+          {
+            "category": 4,
+            "bank": "",
+            "io": "out",
+            "money": 24900,
+            "memo": null,
+            "isFinished": null,
+            "visible": true
+          },
+          {
+            "category": 5,
+            "bank": "",
+            "io": "out",
+            "money": 7700,
+            "memo": null,
+            "isFinished": null,
+            "visible": true
+          },
+          {
+            "category": 6,
+            "bank": "",
+            "io": "out",
+            "money": 13500,
+            "memo": null,
+            "isFinished": null,
+            "visible": true
+          },
+          {
+            "category": 7,
+            "bank": "",
+            "io": "out",
+            "money": 13500,
+            "memo": null,
+            "isFinished": null,
+            "visible": true
+          },
+          {
+            "category": 8,
+            "bank": "",
+            "io": "out",
+            "money": 105090,
+            "memo": null,
+            "isFinished": null,
+            "visible": true
+          },
+          {
+            "category": 9,
+            "bank": "",
+            "io": "out",
+            "money": 64400,
+            "memo": null,
+            "isFinished": null,
+            "visible": true
+          },
+          {
+            "category": 10,
+            "bank": "",
+            "io": "out",
+            "money": 158640,
+            "memo": null,
+            "isFinished": null,
+            "visible": true
+          }
+        ],
+        "2018-06-08": [
+          {
+            "category": 11,
+            "bank": "",
+            "io": "out",
+            "money": 24170,
+            "memo": null,
+            "isFinished": null,
+            "visible": true
+          }
+        ]
+      }
+    },
+    "categories": [
+      {
+        "u": 3,
+        "value": "생필품"
+      },
+      {
+        "u": 1,
+        "value": "생활비"
+      },
+      {
+        "u": 4,
+        "value": "식기건조대"
+      },
+      {
+        "u": 9,
+        "value": "아기의자"
+      },
+      {
+        "u": 10,
+        "value": "이유식 마스터기"
+      },
+      {
+        "u": 6,
+        "value": "이유식 쌀가루, 찹쌀가루"
+      },
+      {
+        "u": 8,
+        "value": "이유식용기, 스푼 등등..."
+      },
+      {
+        "u": 7,
+        "value": "이유식저울"
+      },
+      {
+        "u": 5,
+        "value": "이유식턱받이"
+      },
+      {
+        "u": 11,
+        "value": "장보기"
+      }
+    ],
+    "banks": [
+      {
+        "u": 2,
+        "value": "우리은행(1002-754-421384)"
+      }
+    ],
+    "sequence": 11
+  }
+] {
+
+}
